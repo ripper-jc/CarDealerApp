@@ -1,39 +1,41 @@
-import { Suspense } from "react"
-import Link from "next/link"
-import { notFound } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import VehicleModels from "@/components/VehicleModels"
+import { Suspense } from 'react';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import VehicleModels from '@/components/VehicleModels';
 
 interface ResultPageProps {
   params: {
-    makeId: string
-    year: string
-  }
+    makeId: string;
+    year: string;
+  };
 }
 
 export async function generateStaticParams() {
-  const makes = await fetch("https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json")
+  const makes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/vehicles/GetMakesForVehicleType/car?format=json`)
     .then((res) => res.json())
-    .then((data) => data.Results)
+    .then((data) => data.Results);
 
-  const currentYear = new Date().getFullYear()
-  const years = Array.from({ length: currentYear - 2014 }, (_, i) => (currentYear - i).toString())
+  const currentYear = new Date().getFullYear();
+  const years = Array.from({ length: currentYear - 2014 }, (_, i) =>
+    (currentYear - i).toString()
+  );
 
   const params = makes.flatMap((make: { MakeId: number }) =>
     years.map((year) => ({
       makeId: make.MakeId.toString(),
       year,
-    })),
-  )
+    }))
+  );
 
-  return params
+  return params;
 }
 
 export default async function ResultPage({ params }: ResultPageProps) {
-  const { makeId, year } = await params
+  const { makeId, year } = await params;
 
   if (isNaN(Number(makeId)) || isNaN(Number(year))) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -46,6 +48,5 @@ export default async function ResultPage({ params }: ResultPageProps) {
         <Button>Back to Filter</Button>
       </Link>
     </main>
-  )
+  );
 }
-

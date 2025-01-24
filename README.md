@@ -56,7 +56,4 @@ This project uses ESLint and Prettier for code quality and consistency. To run t
   ```bash
   npm run format
   ```
-
-## License
-
-This project is licensed under the MIT License.
+  

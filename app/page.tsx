@@ -1,4 +1,4 @@
-import FilterPage from "@/components/FilterPage"
+import FilterPage from '@/components/FilterPage';
 
 export default function Home() {
   return (
@@ -6,5 +6,5 @@ export default function Home() {
       <h1 className="text-4xl font-bold mb-8">Car Dealer App</h1>
       <FilterPage />
     </main>
-  )
+  );
 }
