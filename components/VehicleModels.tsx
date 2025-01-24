@@ -12,7 +12,7 @@ async function getVehicleModels(
   year: string
 ): Promise<VehicleModel[]> {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/vehicles/GetModelsForMakeIdYear/makeId/${makeId}/modelyear/${year}?format=json`
+    `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/${makeId}/modelyear/${year}?format=json`
   );
   if (!res.ok) {
     throw new Error('Failed to fetch vehicle models');

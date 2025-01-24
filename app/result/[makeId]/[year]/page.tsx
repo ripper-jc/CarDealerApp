@@ -12,7 +12,7 @@ interface ResultPageProps {
 }
 
 export async function generateStaticParams() {
-  const makes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/vehicles/GetMakesForVehicleType/car?format=json`)
+  const makes = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json`)
     .then((res) => res.json())
     .then((data) => data.Results);
 
