@@ -56,4 +56,3 @@ This project uses ESLint and Prettier for code quality and consistency. To run t
   ```bash
   npm run format
   ```
-  
