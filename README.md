@@ -31,17 +31,6 @@ The Car Dealer App allows users to filter and view vehicle models based on make 
    npm run dev
    ```
 
-4. Build the application for production:
-
-   ```bash
-   npm run build
-   ```
-
-5. Start the production server:
-   ```bash
-   npm start
-   ```
-
 ## Code Quality
 
 This project uses ESLint and Prettier for code quality and consistency. To run the linters, use the following commands:
